@@ -31,6 +31,7 @@ docker compose -f traefik/compose.yaml
 ```sh
 docker compose -f traefik/compose.yaml up -d
 docker compose -f static/compose.yaml up -d
+docker compose -f node/compose.yaml up -d
 ```
 
 ### Throubleshotting
