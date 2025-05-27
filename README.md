@@ -1,4 +1,4 @@
-# Lean Traefik config example with Docker Compose
+# Traefik examples for static HTML, Node, Laravel and Rails
 
 The monorepo style is for demonstration purposes.
 
