@@ -3,7 +3,14 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send(`Hello from Node Express at ${new Date().toUTCString()}`);
+  res.json({
+    message: "Hello from Node on Traefik",
+    time: new Date(),
+    info: {
+      node: process.version,
+      express: require('express/package.json').version
+    }
+  });
 })
 
 app.listen(port, () => {

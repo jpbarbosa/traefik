@@ -7,7 +7,7 @@ Outside this example, use an dedicated repo and local directory to Traefik.
 ### Goals
 
 - [x] Traefik dashboard running on http://localhost for local development
-- [x] Static HTML Docker Compose sample project running on http://static-site.localhost
+- [x] Static HTML Docker Compose example running on http://static-site.localhost
 - [x] Node project running on http://node.localhost
 - [x] Laravel project running on http://laravel.localhost
 - [ ] Rails project running on http://rails.localhost
@@ -32,6 +32,7 @@ docker compose -f traefik/compose.yaml
 docker compose -f traefik/compose.yaml up -d
 docker compose -f static/compose.yaml up -d
 docker compose -f node/compose.yaml up -d
+docker compose -f laravel/compose.yaml up -d
 ```
 
 ### Throubleshotting
