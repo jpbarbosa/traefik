@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: traefik:v3.3
+    image: traefik:v3.4
     ports:
       - "80:80"
     volumes:
@@ -12,6 +12,13 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`localhost`)"
       - "traefik.http.routers.dashboard.service=api@internal"
+  whoiam:
+    image: traefik/whoami
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+    networks:
+      - traefik-proxy
 
 networks:
   traefik-proxy:
