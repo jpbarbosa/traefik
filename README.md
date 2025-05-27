@@ -1,8 +1,8 @@
 # Lean Traefik config example with Docker Compose
 
-The monorepo style is for the sake of demonstration.
+The monorepo style is for demonstration purposes.
 
-Outside this example, use an dedicated repo and local directory to Traefik.
+Outside this example, use a dedicated repo and local directory for Traefik.
 
 ### Goals
 
@@ -11,7 +11,7 @@ Outside this example, use an dedicated repo and local directory to Traefik.
 - [x] Node project running on http://node.localhost
 - [x] Laravel project running on http://laravel.localhost
 - [x] Rails project running on http://rails.localhost
-- [ ] Get Traefik dashboard running on https://localhost with self-signed certificates to mimic production environment
+- [ ] Get the Traefik dashboard running on https://localhost with self-signed certificates to mimic a production environment
 
 ### How to run only Traefik and WhoAmI
 
@@ -23,8 +23,8 @@ docker network create traefik-proxy
 docker compose -f traefik/compose.yaml
 ```
 
-* To open Traefik dashboard: `open http://localhost` (Traefik dashboard will be shown)
-* To open WhoAmI: `open http://whoami.localhost` (Browser's information will be shown)
+* Traefik dashboard: `open http://localhost` (Traefik dashboard will be shown)
+* WhoAmI example: `open http://whoami.localhost` (Browser's information will be shown)
 
 ### How to run everything
 
@@ -36,10 +36,10 @@ docker compose -f laravel/compose.yaml up -d
 docker compose -f rails/compose.yaml up -d
 ```
 
-### Throubleshotting
+### Troubleshooting
 
-* All `compose.yaml` must be in the same `traefik-proxy` network.
-* All `compose.yaml` nginx service must have `traefik.enable=true` label.
+* All `compose.yaml` files must be in the same `traefik-proxy` network.
+* All `compose.yaml` nginx services must have the `traefik.enable=true` label.
 * When testing HTTPS/SSL/TLS, ensure Chrome is not using automatic/cached redirects from http to https.
 * Use `curl -v http://localhost` as a debug tool if necessary.
 
