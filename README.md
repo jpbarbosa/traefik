@@ -58,3 +58,43 @@ APP_URL=http://${APP_DOMAIN}
 
 LOG_CHANNEL=stderr
 ```
+
+### Self-signed certificates for development
+
+##### Create certificate
+
+```sh
+mkdir -p traefik/certs
+openssl req -x509 -newkey rsa:4096 -nodes -days 365 \
+  -keyout traefik/certs/localhost.key \
+  -out traefik/certs/localhost.cert \
+  -subj "/CN=localhost" \
+  -addext "subjectAltName=DNS:localhost,DNS:whoami.localhost,DNS:node.localhost,DNS:laravel.localhost,DNS:rails.localhost"
+```
+
+##### Add to macOS Keychain
+
+```sh
+sudo security add-trusted-cert \
+  -d \
+  -r trustRoot \
+  -k /Library/Keychains/System.keychain \
+  traefik/certs/localhost.cert
+```
+
+##### Check if is valid
+
+```sh
+security verify-cert -c traefik/certs/localhost.cert
+```
+
+```sh
+echo | openssl s_client \
+  -showcerts \
+  -servername localhost \
+  -connect localhost:443 2>/dev/null | openssl x509 -inform pem -noout -text
+```
+
+```sh
+curl https://localhost
+```
