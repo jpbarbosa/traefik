@@ -7,10 +7,10 @@ Outside this example, use an dedicated repo and local directory to Traefik.
 ### Goals
 
 - [x] Traefik dashboard running on http://localhost for local development
-- [ ] Static HTML Docker Compose sample project running on http://static-site.localhost
-- [ ] Node project running on http://node.localhost
+- [x] Static HTML Docker Compose sample project running on http://static-site.localhost
+- [x] Node project running on http://node.localhost
+- [x] Laravel project running on http://laravel.localhost
 - [ ] Rails project running on http://rails.localhost
-- [ ] Laravel project running on http://laravel.localhost
 - [ ] Get Traefik dashboard running on https://localhost with self-signed certificates to mimic production environment
 
 ### How to run only Traefik and WhoAmI
@@ -45,3 +45,14 @@ docker compose -f node/compose.yaml up -d
 
 * https://doc.traefik.io/traefik/getting-started/quick-start/
 * https://doc.traefik.io/traefik/reference/static-configuration/cli/
+
+### Laravel Only
+
+##### Make sure to customize `laravel/.env` with:
+
+```
+APP_HOST=laravel.localhost
+APP_URL=http://${APP_DOMAIN}
+
+LOG_CHANNEL=stderr
+```
