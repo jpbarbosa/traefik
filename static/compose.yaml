@@ -1,0 +1,16 @@
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+      - ./nginx:/etc/nginx/conf.d:ro
+    networks:
+      - traefik-proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.static.rule=Host(`static.localhost`)"
+      - "traefik.http.services.static.loadbalancer.server.port=80"
+
+networks:
+  traefik-proxy:
+    external: true

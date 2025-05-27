@@ -16,11 +16,29 @@ Outside this example, use an dedicated repo and local directory to Traefik.
 ### How to run only Traefik and WhoAmI
 
 ```sh
+docker network create traefik-proxy
+```
+
+```sh
 docker compose -f traefik/compose.yaml
 ```
 
 * To open Traefik dashboard: `open http://localhost` (Traefik dashboard will be shown)
 * To open WhoAmI: `open http://whoami.localhost` (Browser's information will be shown)
+
+### How to run everything
+
+```sh
+docker compose -f traefik/compose.yaml up -d
+docker compose -f static/compose.yaml up -d
+```
+
+### Throubleshotting
+
+* All `compose.yaml` must be in the same `traefik-proxy` network.
+* All `compose.yaml` nginx service must have `traefik.enable=true` label.
+* When testing HTTPS/SSL/TLS, ensure Chrome is not using automatic/cached redirects from http to https.
+* Use `curl -v http://localhost` as a debug tool if necessary.
 
 ### References
 
