@@ -1,0 +1,19 @@
+services:
+  ruby:
+    env_file: .env
+    build: .
+    working_dir: /usr/src/app
+    command: "rails server -b 0.0.0.0" # tail -f /dev/null
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/tmp
+    networks:
+      - traefik-proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rails.rule=Host(`${APP_HOST}`)"
+      - "traefik.http.services.rails.loadbalancer.server.port=3000"
+
+networks:
+  traefik-proxy:
+    external: true

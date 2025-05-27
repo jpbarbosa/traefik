@@ -10,7 +10,7 @@ Outside this example, use an dedicated repo and local directory to Traefik.
 - [x] Static HTML Docker Compose example running on http://static-site.localhost
 - [x] Node project running on http://node.localhost
 - [x] Laravel project running on http://laravel.localhost
-- [ ] Rails project running on http://rails.localhost
+- [x] Rails project running on http://rails.localhost
 - [ ] Get Traefik dashboard running on https://localhost with self-signed certificates to mimic production environment
 
 ### How to run only Traefik and WhoAmI
@@ -33,6 +33,7 @@ docker compose -f traefik/compose.yaml up -d
 docker compose -f static/compose.yaml up -d
 docker compose -f node/compose.yaml up -d
 docker compose -f laravel/compose.yaml up -d
+docker compose -f rails/compose.yaml up -d
 ```
 
 ### Throubleshotting
