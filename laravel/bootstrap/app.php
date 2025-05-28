@@ -11,7 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->trustProxies(at: '*'); // Required when running Laravel behind Traefik with SSL
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
